@@ -28,7 +28,82 @@ print("Welcome back to the UW Calculator")
 //: IMPORTANT: If any tests are commented out, you will be graded a zero (0)! You should never be in the habit of eliminating tests to make the code pass.
 //:
 class Calculator {
+    // 1 basic operations first
+    
+    func add(lhs: Int, rhs: Int) -> Int {
+            lhs + rhs
+        }
+    
+    func subtract(lhs: Int, rhs: Int) -> Int {
+        lhs - rhs
+    }
+    
+    func divide(lhs: Int, rhs: Int) -> Int {
+        lhs/rhs
+    }
+    
+    func multiply(lhs: Int, rhs: Int) -> Int {
+        lhs * rhs
+    }
+    
+    
+    // 2 higher order function (only one?)
+    func mathOp(lhs: Int, rhs: Int, op: (Int, Int) -> Int) -> Int {
+           op(lhs, rhs)
+       }
+    
+    
+    // 3 array funcitons
+    
+    func add(_ arr: [Int]) -> Int {
+            arr.reduce(0, +)
+        // reduce combines all elements of a collection into a single value
+        }
+    
+        func count(_ arr: [Int]) -> Int {
+            arr.count
+        }
+
+        func multiply(_ arr: [Int]) -> Int {
+            arr.reduce(1, *)
+        }
+
+        func avg(_ arr: [Int]) -> Int {
+            return add(arr) / count(arr)
+        }
+    
+    
+    // 4 higher order array func
+    func mathOp(args: [Int], beg: Int, op: (Int, Int) -> Int) -> Int {
+        args.reduce(beg, op)
+    }
+    
+    
+    // 5 cartesian point
+    func add(lhs: (Int, Int), rhs: (Int, Int)) -> (Int, Int) {
+            (lhs.0 + rhs.0, lhs.1 + rhs.1)
+        }
+
+        func subtract(lhs: (Int, Int), rhs: (Int, Int)) -> (Int, Int) {
+            (lhs.0 - rhs.0, lhs.1 - rhs.1)
+        }
+    
+    // 6 dictionary
+    func add(lhs: [String: Int], rhs: [String: Int]) -> [String: Int] {
+           [
+               "x": (lhs["x"] ?? 0) + (rhs["x"] ?? 0),
+               "y": (lhs["y"] ?? 0) + (rhs["y"] ?? 0)
+           ]
+       }
+
+       func subtract(lhs: [String: Int], rhs: [String: Int]) -> [String: Int] {
+           [
+               "x": (lhs["x"] ?? 0) - (rhs["x"] ?? 0),
+               "y": (lhs["y"] ?? 0) - (rhs["y"] ?? 0)
+           ]
+       }
 }
+
 
 //: Don't change the name of this object (`calc`); it's used in all the tests.
 let calc = Calculator()
